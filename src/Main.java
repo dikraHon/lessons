@@ -1,51 +1,86 @@
-import java.util.Scanner;
+import java.sql.Array;
+import java.util.Arrays;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        reversalOfWord();
-        stringConversion();
+        findMaxMinElementArray();
+        countEvenOddNumbersOfArray();
+        reverseArray();
     }
 
-/*Напишите программу, которая принимает строку и переставляет слова в обратном
-порядке, используя только методы String и StringBuilder.*/
+/*  Напишите программу, которая находит и выводит максимальное и минимальное
+значение в массиве целых чисел. Также вычислите индекс этих элементов.  */
 
-    public static void reversalOfWord(){
-        System.out.println("Enter your message: ");
-        String str = new Scanner(System.in).nextLine();
-        StringBuilder stringReverse = new StringBuilder();
-        str += " ";
+    public static void findMaxMinElementArray(){
+        int[] mas = new int[10];
+        int maxElement = 0;
+        int indexMaxElement = 0;
+        int minElement = 100;
+        int indexMinElement = 0;
         int i = 0;
-        String stroka = "";
-        while (i < str.length() ){
-            if (str.charAt(i) == ' '){
-                stringReverse.insert(0, stroka + " ");
-                stroka = "";
-                i++;
-                continue;
+        for (; i < mas.length; i++) {
+            mas[i] = new Random().nextInt(10);
+        }
+        System.out.println("Task 1. Array: \n" + Arrays.toString(mas));
+        i = 0;
+        while (i < mas.length) {
+            if (maxElement < mas[i]) {
+                maxElement = mas[i];
+                indexMaxElement = i;
+            } else if (minElement > mas[i]) {
+                minElement = mas[i];
+                indexMinElement = i;
             }
-            stroka = stroka + str.charAt(i);
             i++;
         }
-        System.out.println(stringReverse);
+        System.out.println("Max element array : [" + indexMaxElement + "] - " + maxElement +
+                "\nMin element Array: [" + indexMinElement + "] - " + minElement + "\n");
     }
 
-/* Реализуйте программу, которая преобразует строку в последовательность ASCII
-кодов и строку кодов в текст, используя циклы и методы String.*/
+    /* Напишите программу, которая принимает массив целых чисел и подсчитывает,
+сколько четных и сколько нечетных чисел в нем содержится */
 
-    public static void stringConversion(){
-        System.out.println("Enter text: ");
-        String str = new Scanner(System.in).nextLine();
-        StringBuilder str1 = new StringBuilder();
-        StringBuilder str2 = new StringBuilder();
-        int i = 0, j;
-        while(i < str.length()) {
-            str1.append((int) str.charAt(i));
-            j = str.charAt(i);
-            str2.append((char) j);
+    public static void countEvenOddNumbersOfArray(){
+        int[] mas = new int[10];
+        int i = 0;
+        int countEvenNumber = 0;
+        int countOddNumber = 0;
+        for (; i < mas.length; i++) {
+            mas[i] = new Random().nextInt(10);
+        }
+        System.out.println("Task 2. Array: \n" + Arrays.toString(mas));
+        i = 0;
+        while(i < mas.length) {
+            if(mas[i] % 2 == 0)
+                ++countEvenNumber;
+            else
+                ++countOddNumber;
             i++;
         }
-        System.out.println("String: " + str +
-                "\nconversion ascii: " + str1 +
-                "\nconversion string: " + str2);
+        System.out.println("Amount event number: " + countEvenNumber + "\nAmount odd number: " + countOddNumber + "\n");
+    }
+
+    /* Напишите программу, которая принимает массив целых чисел и изменяет его порядок
+на обратный. Выведите результат после изменения порядка. */
+
+    public static void reverseArray() {
+        int[] mas = new int[10];
+        int[] masReverse = new int[10];
+        int i = 0;
+        int j = 0;
+        for (; i < mas.length; i++) {
+            mas[i] = new Random().nextInt(10);
+        }
+        System.out.println("Task 3. Array: \n" + Arrays.toString(mas));
+        i = mas.length - 1;
+        while (i > 0){
+            while(j < masReverse.length) {
+                masReverse[j] = mas[i];
+                j++;
+                i--;
+            }
+        }
+        System.out.println("Reverse array: \n" + Arrays.toString(masReverse));
     }
 }
