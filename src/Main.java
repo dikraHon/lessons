@@ -74,12 +74,10 @@ public class Main {
         }
         System.out.println("Task 3. Array: \n" + Arrays.toString(mas));
         i = mas.length - 1;
-        while (i > 0){
-            while(j < masReverse.length) {
-                masReverse[j] = mas[i];
-                j++;
-                i--;
-            }
+        while(j < masReverse.length) {
+            masReverse[j] = mas[i];
+            j++;
+            i--;
         }
         System.out.println("Reverse array: \n" + Arrays.toString(masReverse));
     }
