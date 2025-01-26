@@ -80,5 +80,20 @@ public class Main {
             i--;
         }
         System.out.println("Reverse array: \n" + Arrays.toString(masReverse));
+        j = 0;
+        i = 0;
+        while(j < masReverse.length) {
+            if (masReverse[j] == mas[j]){
+                i = 0;
+            } else {
+                i++;
+            }
+            j++;
+        }
+        if (i == 0) {
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("not Palindrome");
+        }
     }
 }
